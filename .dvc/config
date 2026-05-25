@@ -1,0 +1,6 @@
+[core]
+    remote = localstorage
+['remote "local_storage"']
+    url = ../../alpha_dvc_remote
+['remote "localstorage"']
+    url = ../../alpha_dvc_remote
