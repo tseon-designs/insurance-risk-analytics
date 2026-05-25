@@ -1,0 +1,128 @@
+=== 01 EDA ===
+
+════════════════════════════════════════════
+   ACIS PORTFOLIO OVERVIEW (Feb 2014 – Aug 2015)
+════════════════════════════════════════════
+  Total Policies          :    1,000,098
+  Total Premium Collected : R61,911,562.70
+  Total Claims Paid       : R64,867,546.17
+  Total Margin            : R-2,955,983.47
+  ─────────────────────────────────────────
+  Overall Loss Ratio      :       1.0477
+  Claim Frequency         :        0.28%
+  Policies with Claims    :        2,788
+════════════════════════════════════════════
+
+
+
+── Loss Ratio by Province ──
+
+
+=== 02 HYPOTHESIS TESTING ===
+                                Hypothesis              KPI        Group A  \
+0  H₁: No risk difference across provinces  Claim Frequency  All Provinces   
+1  H₁: No risk difference across provinces   Claim Severity  All Provinces   
+
+         Group B            Test  Statistic  p-value  Alpha   Decision  \
+0  All Provinces     Chi-squared   104.1909      0.0   0.05  Reject H₀   
+1  All Provinces  Kruskal-Wallis   105.7536      0.0   0.05  Reject H₀   
+
+                                                                                                            Interpretation  
+0  Provinces show statistically significant differences in claim frequency. Targeted provincial pricing adjustments are...  
+1  Average claim severity varies significantly across provinces. High-severity provinces may require larger premium loa...  
+                                               Hypothesis  \
+0                H₂: No risk difference between zip codes   
+1  H₃: No significant margin difference between zip codes   
+
+                                   KPI                Group A  \
+0                       Claim Severity  All valid PostalCodes   
+1  Margin (TotalPremium − TotalClaims)  All valid PostalCodes   
+
+                 Group B            Test   Statistic  p-value  Alpha  \
+0  All valid PostalCodes  Kruskal-Wallis    234.9024      0.0   0.05   
+1  All valid PostalCodes  Kruskal-Wallis  88471.5673      0.0   0.05   
+
+    Decision  \
+0  Reject H₀   
+1  Reject H₀   
+
+                                                                                                            Interpretation  
+0  Claim severity differs significantly across postal codes. Fine-grained geographic pricing at zip-code level is recom...  
+1          Policy margins vary significantly across postal codes. Some zip codes are systematically over- or under-priced.  
+                                     Hypothesis              KPI Group A  \
+0  H₄: No risk difference between Women and Men  Claim Frequency    Male   
+1  H₄: No risk difference between Women and Men   Claim Severity    Male   
+
+  Group B            Test  Statistic   p-value  Alpha           Decision  \
+0  Female     Chi-squared     0.0037  0.951464   0.05  Fail to Reject H₀   
+1  Female  Welch's t-test    -0.5790  0.568029   0.05  Fail to Reject H₀   
+
+                                                                Interpretation  
+0  No statistically significant difference in claim frequency between genders.  
+1   No statistically significant difference in claim severity between genders.  
+
+══════════════ HYPOTHESIS TEST RESULTS ══════════════
+
+                                               Hypothesis  \
+0                 H₁: No risk difference across provinces   
+1                 H₁: No risk difference across provinces   
+2                H₂: No risk difference between zip codes   
+3  H₃: No significant margin difference between zip codes   
+4            H₄: No risk difference between Women and Men   
+5            H₄: No risk difference between Women and Men   
+
+                                   KPI                Group A  \
+0                      Claim Frequency          All Provinces   
+1                       Claim Severity          All Provinces   
+2                       Claim Severity  All valid PostalCodes   
+3  Margin (TotalPremium − TotalClaims)  All valid PostalCodes   
+4                      Claim Frequency                   Male   
+5                       Claim Severity                   Male   
+
+                 Group B            Test   Statistic   p-value  Alpha  \
+0          All Provinces     Chi-squared    104.1909  0.000000   0.05   
+1          All Provinces  Kruskal-Wallis    105.7536  0.000000   0.05   
+2  All valid PostalCodes  Kruskal-Wallis    234.9024  0.000000   0.05   
+3  All valid PostalCodes  Kruskal-Wallis  88471.5673  0.000000   0.05   
+4                 Female     Chi-squared      0.0037  0.951464   0.05   
+5                 Female  Welch's t-test     -0.5790  0.568029   0.05   
+
+            Decision  \
+0          Reject H₀   
+1          Reject H₀   
+2          Reject H₀   
+3          Reject H₀   
+4  Fail to Reject H₀   
+5  Fail to Reject H₀   
+
+                                                                                                            Interpretation  
+0  Provinces show statistically significant differences in claim frequency. Targeted provincial pricing adjustments are...  
+1  Average claim severity varies significantly across provinces. High-severity provinces may require larger premium loa...  
+2  Claim severity differs significantly across postal codes. Fine-grained geographic pricing at zip-code level is recom...  
+3          Policy margins vary significantly across postal codes. Some zip codes are systematically over- or under-priced.  
+4                                              No statistically significant difference in claim frequency between genders.  
+5                                               No statistically significant difference in claim severity between genders.  
+
+=== 03 MODELING ===
+
+── Regression Model Comparison ──
+
+                         RMSE     R2
+Model                               
+Linear Regression 34,305.4600 0.2682
+Random Forest     33,522.4300 0.3013
+XGBoost           36,498.8700 0.1717
+
+── Classification Model Comparison ──
+
+                     Accuracy  Precision  Recall     F1    AUC
+Model                                                         
+Logistic Regression    0.9971     0.0000  0.0000 0.0000 0.7566
+Random Forest          0.8040     0.0131  0.8950 0.0258 0.9030
+XGBoost                0.8151     0.0136  0.8761 0.0268 0.9053
+
+Risk-Based Premium Summary:
+  Mean Risk Premium   : R  3,341.07
+  Median Risk Premium : R      1.03
+  Min / Max           : R0.00 / R387,312.44
+
