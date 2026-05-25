@@ -1,6 +1,73 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+
+# Virtual environments
 .venv/
-.env
+venv/
+ENV/
+env/
+
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
-data/
+*.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Data files – tracked by DVC, not Git
+data/raw/
+data/processed/
+data/*.csv
+data/*.txt
+data/*.parquet
+data/*.xlsx
+
+# DVC cache (local)
+/tmp/
+
+# Test & coverage artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Distribution / packaging
+*.manifest
+*.spec
+MANIFEST
+
+# Logs
+*.log
+logs/
+
+# Reports (generated artifacts – optional: keep final_report.md)
+reports/*.png
+reports/*.html

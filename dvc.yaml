@@ -1,0 +1,9 @@
+stages:
+  prepare:
+    cmd: python src/data_loader.py
+    deps:
+      - src/data_loader.py
+      - data/raw/MachineLearningRating_v3.txt
+    outs:
+      - data/processed/insurance_cleaned.csv
+    desc: "Load raw pipe-delimited data, clean and engineer features, save processed CSV"
